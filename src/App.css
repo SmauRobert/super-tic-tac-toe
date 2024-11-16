@@ -1,38 +1,184 @@
-.App {
-  text-align: center;
+:root {
+  --background-color: #2B4162;
+  --gameboard-background: #385F71;
+  --miniboard-background: #73AB84;
+  --card-background: #ccc;
+
+  --valid-cell-color: #90FCF9;
+  --invalid-cell-color: #63B4D1;
+  --hover-cell-color: #7AD8E5;
+  --border-color: #000000;
+
+  --font-color: #d2d2d2;
+  --cell-text-color: #000000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  /* border: 1px solid violet; */
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.background {
+  background-color: var(--background-color);
+  position: fixed;
+  top: 0;
+  left: 0;  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.game-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--font-color);
+  margin-bottom: 20px;
+}
+
+.game-cell {
+  background-color: var(--invalid-cell-color);
+  border: 2px solid black;
+  width: 50px;
+  aspect-ratio: 1;
+  font-size: 32px;
+  color: var(--cell-text-color);
+  border-radius: 45px;
+  margin: 2px;
+  font-weight: bold;
+}
+
+.valid {
+  background-color: var(--valid-cell-color);
+}
+
+.valid:hover {
+  background-color: var(--hover-cell-color);
+}
+
+.miniboard-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.miniboard {
+  display: grid;
+  background-color: var(--miniboard-background);
+  grid-template-rows: repeat(3, 1fr);
+  border: 2px solid black;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 45px;
+  aspect-ratio: 1;
+}
+
+.miniboard-winner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.X-color {
+  background-color: brown;
+  color: var(--font-color);
+}
+
+.O-color {
+  background-color: blue;
+  color: var(--font-color);
+}
+
+.D-color {
+  background-color: blueviolet;
+  color: var(--font-color);
+}
+
+.gameboard-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gameboard {
+  display: grid;
+  aspect-ratio: 1;
+  grid-template-rows: repeat(3, 1fr);
+  background-color: var(--gameboard-background);
+  padding: 10px;
+  border-radius: 45px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info-card {
+  background-color: var(--card-background);
+  width: 100%;
+  height: 100%;
+  border-radius: 45px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.card-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.card-entry {
+  font-size: 32px;
+  margin-top: 15px;
+  align-self: left;
+}
+
+.card-button {
+  float: bottom;
+  margin: 10px;
+  width: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 45px;
+  background-color: #fff;
+}
+
+.card-button:hover {
+  background-color: #eee;
+}
+
+.menu-bar {
+  max-width: 40vw;
+  width: 400px;
+  height: 100vh;
+  position: absolute;
+  top: calc(100vh - 80px);
+  transition: top 1.5s ease-in-out;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu-bar:hover {
+  top: 40vh;
 }
